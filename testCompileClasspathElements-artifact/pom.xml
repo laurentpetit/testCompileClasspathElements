@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>test artifact</name>
+  <groupId>testCompileClasspathElements</groupId>
+  <artifactId>artifact</artifactId>
+<packaging>eclipse-plugin</packaging>
+  <version>0.1.0-SNAPSHOT</version>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <tycho-version>0.10.0</tycho-version>
+        </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>testCompileClasspathElements</groupId>
+        <artifactId>mojo</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>print</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+                        <plugin>
+                                <groupId>org.sonatype.tycho</groupId>
+                                <artifactId>tycho-maven-plugin</artifactId>
+                                <version>${tycho-version}</version>
+                                <extensions>true</extensions>
+                        </plugin>
+
+                        <plugin>
+                                <groupId>org.sonatype.tycho</groupId>
+                                <artifactId>target-platform-configuration</artifactId>
+                                <version>${tycho-version}</version>
+                                <configuration>
+                                        <resolver>p2</resolver>
+                                        <pomDependencies>consider</pomDependencies>
+                                </configuration>
+                        </plugin>
+    </plugins>
+  </build>
+<dependencies>
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.7</version>
+</dependency>
+</dependencies>
+        <repositories>
+                <repository>
+                        <id>galileo</id>
+                        <layout>p2</layout>
+                        <url>http://download.eclipse.org/releases/galileo/</url>
+                </repository>
+        </repositories>
+</project>
